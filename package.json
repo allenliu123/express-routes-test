@@ -1,0 +1,23 @@
+{
+  "name": "express-routes-test",
+  "version": "0.0.1",
+  "description": "display and test express routes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/allenliu123/express-routes-test.git"
+  },
+  "keywords": [
+    "express",
+    "route"
+  ],
+  "author": "allen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/allenliu123/express-routes-test/issues"
+  },
+  "homepage": "https://github.com/allenliu123/express-routes-test#readme"
+}
