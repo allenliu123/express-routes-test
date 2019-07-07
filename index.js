@@ -1,18 +1,12 @@
 var express = require('express')
+var swig = require('swig')
 
-var app1 = express()
-app1.get('/', (req, res) => {
-    res.send('asdfasdf')
-})
-app1.listen(9090)
-
-function view(app){
+function view(app, port=9090){
     var stacks = app._router.stack
     var result = []
     for(var item of stacks){
         if(item.route){
             var obj = {}
-            console.log(item.route)
             obj.path = item.route.path
             function methods(m){
                 var methods = []
@@ -29,7 +23,15 @@ function view(app){
     app.get('/apiview', (req, res) => {
         res.send(result)
     })
+    var server = express()
+    server.engine('html',swig.renderFile);
+    server.set('views','./views');
+    server.set('view engine','html');
+    server.listen(port)
+    server.get('/', (req, res) => {
+        // res.send(result)
+        res.render('index.html');
+    })
 }
 
 module.exports = view
-
