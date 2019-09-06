@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="../public/css/index.css">
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	<title>express routes test</title>
+</head>
+<body>
+	<div class="container">
+		<h1>localhost:8080</h1>
+		{% block view%}
+		{% for route in routes %}
+		<hr>
+		{% if route.methods === 'GET' %}
+		<div class="item">
+			<b class="path">{{route.path}}</b>
+			<div class="tag tag-get">{{route.methods}}</div>
+		</div>
+
+		<div class="detail">
+			<input class="input-value" type="text" hidden>
+			<button class="input-submit" hidden>send</button>
+			<div class="result">
+				<!-- <div class="menu">
+					<button>data</button>
+					<button>header</button>
+				</div> -->
+				<div class="card">
+					<div class="content"></div>
+				</div>
+			</div>
+		</div>
+		{% elseif route.methods === 'POST' %}
+		<div class="item">
+			<b class="path">{{route.path}}</b>
+			<div class="tag tag-post">{{route.methods}}</div>
+		</div>
+		
+		<div class="detail">
+			<input class="input-value" type="text">
+			<button class="input-submit">send</button><br>
+			<div class="result">
+				<!-- <div class="menu">
+					<button>data</button>
+					<button>header</button>
+				</div> -->
+				<div class="card">
+					<div class="content"></div>
+				</div>
+			</div>
+		</div>
+		{% elseif route.methods === 'DELETE' %}
+		<div class="item">
+			<b class="path">{{route.path}}</b>
+			<div class="tag tag-delete">{{route.methods}}</div>
+		</div>
+		
+		<div class="detail">
+			<input class="input-value" type="text">
+			<button class="input-submit">send</button><br>
+			<div class="result">
+				<!-- <div class="menu">
+					<button>data</button>
+					<button>header</button>
+				</div> -->
+				<div class="card">
+					<div class="content"></div>
+				</div>
+			</div>
+		</div>
+		{% elseif route.methods === 'PUT' %}
+		<div class="item">
+			<b class="path">{{route.path}}</b>
+			<div class="tag tag-put">{{route.methods}}</div>
+		</div>
+		
+		<div class="detail">
+			<input class="input-value" type="text">
+			<button class="input-submit">send</button><br>
+			<div class="result">
+				<!-- <div class="menu">
+					<button>data</button>
+					<button>header</button>
+				</div> -->
+				<div class="card">
+					<div class="content"></div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		
+		{% endfor %}
+		{% endblock %}
+	</div>
+	<script>
+		
+		$(function(){
+			$('.tag').on('click', function(){
+				// if($(this))
+				var index = $(".tag").index(this)
+				if($('.tag').eq(index).html() == 'GET'){
+					$.ajax({
+						type: "get",
+						url: "http://localhost:8080" + $('.path').eq(index).html(),
+						xhrFields: {withCredentials: true},  //一对“文件名-文件值”在本机设置XHR对象。例如，用它来设置withCredentials为true的跨域请求。 用户固定PHPSESSID不变
+						success: function(data) {
+							$('.content').eq(index).html(data)
+						},
+						error: function() {
+							console.log('Request Error.');
+						}
+					})
+				}
+				$('.detail').eq(index).slideToggle()
+			})
+			$('.input-submit').on('click', function(){
+				var index = $(".input-submit").index(this)
+				console.log(index)
+				$.ajax({
+					type: "post",
+					url: "http://localhost:8080" + $('.path').eq(index).html(),
+					data: $('.input-value').html(),
+					xhrFields: {withCredentials: true},  //一对“文件名-文件值”在本机设置XHR对象。例如，用它来设置withCredentials为true的跨域请求。 用户固定PHPSESSID不变
+					success: function(data) {
+						$('.content').eq(index).html(data)
+					},
+					error: function() {
+						console.log('Request Error.');
+					}
+				})
+			})
+		})
+	</script>
+</body>
+</html>

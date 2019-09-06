@@ -1,6 +1,6 @@
 {
   "name": "express-routes-test",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "display and test express routes",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/allenliu123/express-routes-test#readme",
   "dependencies": {
+    "express-list-endpoints": "^4.0.1",
     "swig": "^1.4.2"
   }
 }

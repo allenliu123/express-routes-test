@@ -1,0 +1,66 @@
+body {
+    font-family: 'Courier New', Courier, monospace
+}
+.container {
+    width: 60%;
+    margin: 80px auto;
+    box-shadow: 0px 0px 10px #999;
+    padding: 30px;
+}
+
+.item {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.item .path {
+    cursor: pointer;
+}
+
+.item .tag {
+    cursor: pointer;
+    font-size: 0.9em;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.path {
+    line-height: 26px;
+}
+
+.tag-get {
+    background-color: #7ED321;
+}
+.tag-post {
+    background-color: #1890ff;
+}
+.tag-delete {
+    background-color: #D0021B;
+}
+.tag-put {
+    background-color: #F5A623;
+}
+
+.detail {
+    display: none;
+}
+
+.input-submit {
+    padding: 5px;
+    background-color: #666;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.card {
+    border-radius: 5px;
+    width: 92%;
+    margin: 0px auto;
+    border: 1px solid #999;
+    padding: 15px;
+    margin: 10px;
+}
